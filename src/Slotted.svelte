@@ -1,6 +1,25 @@
 <script lang="ts">
+  import {afterUpdate, onMount, tick} from "svelte";
+
   let izslotaalzadefault: boolean = true;
   let kontrolisiIzSlotDefinicije: boolean = false;
+
+  //---CREATION
+  //onMount
+  //onDestroy
+
+  onMount(() => {
+    console.log("|Asdasd");
+  });
+
+  afterUpdate(() => {
+    console.log(izslotaalzadefault);
+  });
+
+  //----UPDATE
+  //beforeUpdate
+  //afterUpdate
+  //tick
 </script>
 
 <div class="backdrop"></div>

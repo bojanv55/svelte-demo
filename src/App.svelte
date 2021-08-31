@@ -1,12 +1,14 @@
 <script lang="ts">
   import ContactCard from "./ContactCard.svelte";
   import Slotted from "./Slotted.svelte";
+  import {tick} from "svelte";
 
   let name: string = 'world';
   let age: number = 33;
   let done: boolean = false;
   let noChange: string;
   let lista = ['a', 'b'];
+  let tekst = "asdas";
 
   let izSlota: boolean;
 
@@ -45,6 +47,24 @@
 
   let stampajBzvz = (event) => {
     console.log(event);
+  }
+
+  let odradi = (event) => {
+    if(event.which != 9){
+      return;
+    }
+    event.preventDefault();
+    const ss = event.target.selectionStart;
+    const se = event.target.selectionEnd;
+    const value = event.target.value;
+
+    tekst = value.slice(0,ss) + value.slice(ss, se).toUpperCase() + value.slice(se);
+
+    tick().then(() => {
+      //izvrsava se kada se updateuje tekst kao microtask koji resolvujemo sa ovim promisom
+      event.target.selectionStart = ss;
+      event.target.selectionEnd = se;
+    });
   }
 </script>
 
@@ -89,6 +109,10 @@
   <Slotted>
     <h2>OK</h2>
   </Slotted>
+
+
+
+  <textarea rows="5" value="{tekst}" on:keydown={odradi}></textarea>
 </main>
 
 <style lang="scss">
