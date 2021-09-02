@@ -39,9 +39,9 @@
     <div transition:fly|local={{x: 200, y:0, duration: 3000}} on:click={() => mici(b)}
          on:introstart={() => console.log('startsin')}
          on:introend={() => console.log("introend")}
-         animate:flip={{duration:300}}
+
          class="boxd">{b}</div>
-    <!-- flip krajnja stavka da se spusti dolje -->
+    <!-- animate:flip={{duration:300}} flip krajnja stavka da se spusti dolje -->
   {/each}
   <input type="text" bind:value="{vrij}">
   <button on:click={dodaj}>DODAJ</button>
