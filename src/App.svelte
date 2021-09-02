@@ -2,6 +2,11 @@
   import ContactCard from "./ContactCard.svelte";
   import Slotted from "./Slotted.svelte";
   import {tick} from "svelte";
+  import Forma from "./Forma.svelte";
+  import DrugiDioStore from "./store/DrugiDioStore.svelte";
+  import PrviDioStore from "./store/PrviDioStore.svelte";
+  import SamoMaloStor from "./store/SamoMaloStor.svelte";
+  import Animated from "./animation/Animated.svelte";
 
   let name: string = 'world';
   let age: number = 33;
@@ -50,7 +55,7 @@
   }
 
   let odradi = (event) => {
-    if(event.which != 9){
+    if (event.which != 9) {
       return;
     }
     event.preventDefault();
@@ -58,7 +63,7 @@
     const se = event.target.selectionEnd;
     const value = event.target.value;
 
-    tekst = value.slice(0,ss) + value.slice(ss, se).toUpperCase() + value.slice(se);
+    tekst = value.slice(0, ss) + value.slice(ss, se).toUpperCase() + value.slice(se);
 
     tick().then(() => {
       //izvrsava se kada se updateuje tekst kao microtask koji resolvujemo sa ovim promisom
@@ -69,6 +74,17 @@
 </script>
 
 <main>
+
+  <Animated />
+  <SamoMaloStor />
+  <PrviDioStore />
+  <DrugiDioStore />
+
+  <div>
+    <!-- 2way binding sa formom ispod -->
+    <Forma bind:val={name} />
+  </div>
+
   <h1>Hello {uppercaseName}!</h1>
   <h1>Hello {toUpperName()}!</h1>
   <p>my age is {age}</p>
@@ -113,6 +129,8 @@
 
 
   <textarea rows="5" value="{tekst}" on:keydown={odradi}></textarea>
+
+
 </main>
 
 <style lang="scss">
