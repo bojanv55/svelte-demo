@@ -8,6 +8,7 @@
   import SamoMaloStor from "./store/SamoMaloStor.svelte";
   import Animated from "./animation/Animated.svelte";
   import HttpSm from "./http/HttpSm.svelte";
+  import Advanced from "./advanced/Advanced.svelte";
 
   let name: string = 'world';
   let age: number = 33;
@@ -76,6 +77,7 @@
 
 <main>
 
+  <Advanced />
   <HttpSm />
   <Animated />
   <SamoMaloStor />

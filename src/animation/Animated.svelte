@@ -20,7 +20,7 @@
   let box = ['a','b']
 
   let vrij : string = '';
-  const dodaj = () => {
+  const dodaj = _ => {
     box = [...box, vrij]
   }
 
@@ -36,7 +36,7 @@
   {#each box as b}
     <!-- outrostart outroend -->
     <p in:fade out:fly></p> <!-- ne moze da revertuje animaciju u sred izvodjenja nego se prekine na pola -->
-    <div transition:fly|local={{x: 200, y:0, duration: 3000}} on:click={() => mici(b)}
+    <div transition:fly|local={{x: 200, y:0, duration: 3000}} on:click={_ => mici(b)}
          on:introstart={() => console.log('startsin')}
          on:introend={() => console.log("introend")}
 
